@@ -1,0 +1,9 @@
+# Text-only archive; the V3 video assets are delivered separately.
+.DS_Store
+__pycache__/
+*.pyc
+*.mp4
+*.wav
+*.png
+*.jpg
+*.zip
