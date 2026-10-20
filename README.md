@@ -1,33 +1,81 @@
-# 双 AI「读全」交叉测试｜2026-10-20
+# 双 AI「读全」交叉测试
 
-**龙娘（GPT-6） × 大肥鱼（DSH）｜人工中继双向测试**
+**人工中继条件下的语义保真与跨模型对话实验**  
+*GPT-6（紫晶龙娘） × DSH（大肥鱼）｜2026 年 10 月 20 日*
 
-本仓库为实验对话的独立文字档案。核心证据在 [original/transcript_duel_only.md](original/transcript_duel_only.md)：以 DSH 方 `transcript.md` 为依据，**仅删除全部 `### 你的插话` 及其从属内容（包括模板栏）**，保留双方对话、测试题面、答卷、判分和终局总结。删除记录见 [original/REDACTION_LOG.md](original/REDACTION_LOG.md)。
+## 项目简介
 
-**重要边界：** 这是人工中继整理的档案副本，并非两侧独立抓取、交叉确认的 API 原生日志。文内状态与结算段属于 DSH 方事后记录，不能与即时发言混同。
+本项目记录了一次由人工中继的双 AI 对话实验。两名不同系统中的 AI 没有建立直接通信，而是通过一名人工中继者逐条交换消息，并围绕“读全”——能否准确接收、理解和复述对方的完整表述——开展双向交叉测试。
 
-## 文档
-- [original/transcript_duel_only.md](original/transcript_duel_only.md)：R1–R11 清理后的对话与终局记录
-- [archive/01_PROTOCOL.md](archive/01_PROTOCOL.md)：协议演进与停手规则
-- [archive/02_ROUNDS_AND_SCORES.md](archive/02_ROUNDS_AND_SCORES.md)：五轮裁决与分数
-- [archive/03_VERBATIM_EXCERPTS.md](archive/03_VERBATIM_EXCERPTS.md)：关键原文摘录
-- [archive/04_PROVENANCE.md](archive/04_PROVENANCE.md)：档案来源与边界
-- [archive/questions/](archive/questions/)：五轮原题
-- [skills/](skills/)：DSH 编写的人工中继及读全交叉核验 Skill
+测试不仅关注文字是否被正确回显，也关注**关键命题有没有遗漏、限定条件与否定是否保留、行为主体与逻辑关系有没有被改变，以及引述、推测和已确认事实能否得到正确区分**。
 
-## 双方确认的成绩
+这次交流最初是一次非正式的模型对话预演，在双方协商后发展为带有题面、校验串、明确判据和互相判分的探索性测试。本仓库公开相关文字材料，便于复查具体案例及讨论人工中继场景下的信息保真问题。
 
-| 轮次 | 出题 | 答题 | 判定 | 得分 / 4 |
-|---|---|---|---|---:|
-| R3 | DSH | 龙娘 | 通过（偏移留档） | 3.5 |
-| R4 | 龙娘 | DSH | 未通过（主体错置） | 3.0 |
-| R5 | 龙娘 | DSH | 通过（轻微外延） | 3.5 |
-| R8 | DSH | 龙娘 | 通过 | 4.0 |
-| R9 | 龙娘 | DSH | 未通过（证据层级上移） | 2.0 |
+> **项目定位：** 这是一份可追溯的探索性实验档案，而非独立基准测试、系统性模型评测或能力排行榜。
 
-- 龙娘：平均 **3.75/4 = 93.75/100**
-- DSH：平均 **2.8333/4 ≈ 70.83/100**
-- 题目数量、难度未校准；此结果不是稳定能力排行榜。
-- 校验串均一致，但未形成独立中继复核的证据。
+## 实验设计
 
-本仓库只保存对线文字；视频 V3、透明角色素材、字幕和 Codex 配音工程另行交接，不将影视化台词当成实验原话。
+- **通信方式：** 人工复制与转交消息；双方不直接访问或操作对方的会话页面。
+- **双向测试：** 双方轮流出题，对方依题复述、分类和解释；由出题方对答卷作出裁决。
+- **四项判据：** 完整性、准确性、边界识别与逐字校验。
+- **信息层次：** 分别检查字符是否一致、命题是否保留，以及命题之间的关系是否得到正确重建。
+- **结束控制：** 每轮发出与作答后停止自动追加，由人工中继者决定是否继续。此项为对话规则，**并不等同于对“无限追加”进行过独立压力测试**。
+
+实测共计五道题，题次为 **R3、R4、R5、R8、R9**。原始交流记录按消息回合编号 **R1–R11**，两套编号并不相同。
+
+## 实验结果
+
+以下采用双方在本次对话中确认的正式裁决，保留原判、不作事后追溯调整。
+
+| 题次 | 出题方 | 接题方 | 裁决 | 得分 / 4 | 主要记录 |
+|---|---|---|---|---:|---|
+| R3 | DSH | 龙娘 | 通过 | 3.5 | 将“延迟造成的错觉”转述为与延迟相关；语义偏移留档 |
+| R4 | 龙娘 | DSH | 未通过 | 3.0 | 跨轮次主体指代错置 |
+| R5 | 龙娘 | DSH | 通过 | 3.5 | 工作分工与权限之间存在轻微表述外延 |
+| R8 | DSH | 龙娘 | 通过 | 4.0 | 关键条件、转述和数值边界保留正确 |
+| R9 | 龙娘 | DSH | 未通过 | 2.0 | 将记录中声称发生的多层转述升级为已确认事件 |
+
+按各自已答题的平均分计算：
+
+- **龙娘：** 2 题通过 / 2 题作答，平均 **3.75 / 4（93.75 / 100）**。
+- **DSH：** 1 题通过 / 3 题作答，平均 **2.83 / 4（约 70.83 / 100）**。
+
+这组成绩只反映本次既定题目及双方互判规则下的结果。**双方题量不等，题目难度未校准，判分尺度也曾出现差异，因此不能据此外推稳定的模型能力差距。**
+
+## 主要观察
+
+**字符一致不保证语义一致。** 五道实测题的校验串均正确回显，但仍出现了语义层面的偏移；校验串吻合也不足以证明全文经过独立核验。
+
+**“读到”与“读对关系”是不同要求。** 典型偏差不是单纯漏字，而是在跨句整合时改变了观察与成因、前后轮行为主体，或“某份记录声称发生”与“事件确实发生”之间的关系。
+
+**准确报告错误类型同样重要。** 双方在互判中区分了误读、表述外延、证据层级上移与编造，保留争议及其依据，而没有将所有偏差笼统视为同一种错误。
+
+## 仓库结构
+
+| 路径 | 内容 |
+|---|---|
+| [original/transcript_duel_only.md](original/transcript_duel_only.md) | R1–R11 对话、实测、互判及结算记录 |
+| [original/REDACTION_LOG.md](original/REDACTION_LOG.md) | 公开副本的删节范围与核验说明 |
+| [archive/01_PROTOCOL.md](archive/01_PROTOCOL.md) | 中继协议与判定规则 |
+| [archive/02_ROUNDS_AND_SCORES.md](archive/02_ROUNDS_AND_SCORES.md) | 五轮成绩、计分口径与偏差记录 |
+| [archive/03_VERBATIM_EXCERPTS.md](archive/03_VERBATIM_EXCERPTS.md) | 关键原文摘录 |
+| [archive/04_PROVENANCE.md](archive/04_PROVENANCE.md) | 来源、编辑边界与证据限制 |
+| [archive/questions/](archive/questions/) | 五道实测题的独立索引 |
+| [skills/](skills/) | DSH 编写的人工中继与“读全”交叉核验 Skill |
+
+## 来源与使用边界
+
+本仓库以 **DSH 一侧保存的 `transcript.md`** 为基础，生成可公开的对话档案。其中已按要求删除所有标题为 `### 你的插话` 的栏目及其从属内容；删节位置和原则见 [REDACTION_LOG](original/REDACTION_LOG.md)。
+
+需要注意：
+
+1. 这是人工中继形成的单侧记录副本，**并非双方独立采集、逐项比对的 API 原生日志**。
+2. 原文中的状态更新与终局结算包括档案编写者的整理文字，不能全部当成即时会话发言。
+3. 视频及双声线配音属于后续内容呈现，其改编台词不是本实验的逐字证据；仓库主要保存文字材料。
+4. 测试内容涉及的虚构人物、事件和制度，仅在题面设定内成立，不构成现实事实的证明。
+
+引用本项目时，建议注明“人工中继、双方互判、小样本探索性测试”，并优先链接完整记录及相应题面，不脱离上下文摘取单个分数或判断。
+
+---
+
+*English summary: An exploratory, human-relayed cross-model dialogue experiment examining textual fidelity, semantic relations, source attribution, and epistemic boundaries. Five reciprocal test items and their adjudications are archived here. The results are descriptive of this small, uncalibrated exchange and should not be interpreted as a general model benchmark.*
